@@ -1,0 +1,15 @@
+name: 'Sync With Upstream'
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  sync_master:
+    uses: bradh352/sonic-buildimage/.github/workflows/reuse-sync.yml@bradh352/master
+    with:
+      upstream_repo: "sonic-net/sonic-host-services"
+      upstream_branch: "master"
+      local_branch: "bradh352/master"
+    secrets: inherit
